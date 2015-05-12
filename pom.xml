@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.jrfom</groupId>
+  <artifactId>cors-filter</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>CORS Filter</name>
+  <url>https://github.com/jsumners/cors-filter</url>
+  <description>
+    A CORS filter for the Java Servlet 3.1 specification. Can be configured
+    via a web.xml or via JavaConfig. Requires Java 8.
+  </description>
+  <licenses>
+    <license>
+      <name>MIT</name>
+      <url>http://jsumners.mit-license.org/</url>
+    </license>
+  </licenses>
+
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/jsumners/cors-filter/issues</url>
+  </issueManagement>
+
+  <scm>
+    <connection>scm:git:git@github.com:jsumners/cors-filter.git</connection>
+    <url>https://github.com/jsumners/cors-filter</url>
+    <developerConnection>scm:git:git@github.com:jsumners/cors-filter.git</developerConnection>
+  </scm>
+
+  <developers>
+    <developer>
+      <id>jsumners</id>
+      <name>James Sumners</name>
+      <email>james.sumners@gmail.com</email>
+      <url>http://james.sumners.info/</url>
+      <timezone>-5</timezone>
+      <roles>
+        <role>Lead Developer</role>
+      </roles>
+    </developer>
+  </developers>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+    <javax-servlet.version>3.1.0</javax-servlet.version>
+    <junit.version>4.12</junit.version>
+    <slf4j.version>1.7.7</slf4j.version>
+
+    <!-- Maven plugins -->
+    <javadoc.version>2.10.3</javadoc.version>
+    <jxr.version>2.5</jxr.version>
+    <source.version>2.3</source.version>
+    <surfire.version>2.18.1</surfire.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${javax-servlet.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${javadoc.version}</version>
+        <executions>
+          <execution>
+            <id>attach-javadoc</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>${source.version}</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${javadoc.version}</version>
+        <configuration>
+          <quiet>true</quiet>
+          <links>
+            <link>http://docs.oracle.com/javase/8/docs/api/</link>
+          </links>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>${jxr.version}</version>
+        <configuration>
+          <linkJavadoc>true</linkJavadoc>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>${surefire.version}</version>
+      </plugin>
+    </plugins>
+  </reporting>
+  
+</project>
